@@ -1,0 +1,21 @@
+{
+    "name": "pendalff/yii2-jsonrpc",
+    "description": "Simple json-rpc client via yii2-httpclient",
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "Sem Fukalov",
+          "email": "yapendalff@gmail.com"
+        }
+    ],
+    "minimum-stability" : "stable",
+    "require" : {
+          "yiisoft/yii2": "^2.0",
+          "yiisoft/yii2-httpclient": "^2.0"
+    },
+    "autoload": {
+        "psr-0": {
+              "": "src/"
+        }
+    }
+}
