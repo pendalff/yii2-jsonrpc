@@ -1,6 +1,6 @@
 {
     "name": "pendalff/yii2-jsonrpc",
-    "description": "Simple json-rpc client via yii2-httpclient",
+    "description": "Simple json-rpc client via yii2-httpclient.",
     "license": "MIT",
     "authors": [
         {
