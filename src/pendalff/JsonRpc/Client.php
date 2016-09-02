@@ -161,6 +161,7 @@ class Client extends Component implements ClientInterface, Configurable
                 throw $e;
             }
         }
+        $this->requests = [];
 
         return count($data) > 1 ? $data : array_shift($data);
     }
