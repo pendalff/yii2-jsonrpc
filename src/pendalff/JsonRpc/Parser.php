@@ -6,6 +6,7 @@ use yii\base\InvalidParamException;
 use yii\httpclient\JsonParser;
 use yii\httpclient\Response;
 use yii\helpers\Json;
+use yii\helpers\VarDumper;
 
 /**
  * Class Parser
@@ -29,11 +30,15 @@ class Parser extends JsonParser
         }
 
         if (property_exists($data, 'error')) {
-            throw new Exception($data->error->message ?: $data->error->details, $data->error->code, $data->error->data);
+            if (is_object($data->error)) {
+                throw new Exception($data->error->message ?: $data->error->details, $data->error->code, $data->error->data);
+            } else {
+                throw new Exception(VarDumper::dumpAsString($data), Exception::INTERNAL_ERROR);
+            }
         } elseif (property_exists($data, 'result')) {
             return $data->result;
         } else {
-            throw new Exception('Invalid JSON-RPC response', Exception::INTERNAL_ERROR);
+            throw new Exception('Invalid JSON-RPC response:' . VarDumper::dumpAsString($data), Exception::INTERNAL_ERROR);
         }
     }
 }
