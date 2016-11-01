@@ -156,6 +156,7 @@ class Client extends Component implements ClientInterface, Configurable
             try {
                 $data[$key] = $response->getData();
             } catch (Exception $e) {
+                unset($this->requests[$key]);
                 $e->setRequest($this->requests[$key]);
                 $e->setResponse($response);
                 throw $e;
